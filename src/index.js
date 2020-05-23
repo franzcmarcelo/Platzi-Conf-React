@@ -1,17 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-// const jsx = <h1>Hello, Platzi Badges!</h1>;
-// const element = React.createElement(
-//   'a',
-//   { href: 'https://platzi.com' },
-//   'Ir a Platzi'
-// );
-// const name = 'Stephanie';
-// const sum = () => 3 + 3;
-// const element = React.createElement('h1', {}, `Hola, soy ${name}`);
-// const jsx = <h1>Hola soy, {undefined}</h1>;
+// React ~> createElement
+// ReactDOM ~> appendchild
 
+const container = document.getElementById("app");
+
+// Con React
 const jsx = (
   <div>
     <h1>Hola, soy Richard</h1>
@@ -19,13 +14,25 @@ const jsx = (
   </div>
 );
 
+// Con createElement
 const element = React.createElement(
-  'div',
+  "div",
   {},
-  React.createElement('h1', {}, 'Hola, soy Richard'),
-  React.createElement('p', {}, 'Soy ingeniero de la web.')
+  React.createElement("h1", {}, "Hola, soy Richard"),
+  React.createElement("p", {}, "Soy ingeniero de la web.")
 );
-const container = document.getElementById('app');
 
+// FIXME:
+// Con React DOM
 // ReactDOM.render(__qué__, __dónde__);
+// Funcionan igual los dos
+// 1.
+ReactDOM.render(jsx, container);
+// 2.
 ReactDOM.render(element, container);
+
+// Con appendChild
+const child = document.createElement("h1");
+child.innerText = "Hello Iam child";
+// 3.
+container.appendChild(child);
