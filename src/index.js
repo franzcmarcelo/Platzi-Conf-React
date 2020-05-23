@@ -9,11 +9,11 @@ const container = document.getElementById('app');
 
 ReactDOM.render(
   <Badge
-    firstName="Richard"
-    lastName="Kaufman"
-    avatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
+    firstName="Franz"
+    lastName="Carhuaricra"
+    avatarUrl="https://www.gravatar.com/avatar/f68894dcfd0f933983491fa0833d05e7?d=identicon"
     jobTitle="Frontend Engineer"
-    twitter="sparragus"
+    twitter="franz"
   />,
   container
 );
