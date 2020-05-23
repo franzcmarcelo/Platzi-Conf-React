@@ -7,6 +7,8 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className="Navbar">
+        {/* container-fluid y los font-weight..
+        son clases de Bootstrap.css */}
         <div className="container-fluid">
           <a className="Navbar__brand" href="/">
             <img className="Navbar__brand-logo" src={logo} alt="Logo" />
