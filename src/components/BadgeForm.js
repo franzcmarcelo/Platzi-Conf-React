@@ -1,9 +1,19 @@
 import React from 'react';
 
 class BadgeForm extends React.Component {
+  // Es importante inicializar el state, para que se pueda leer
   state = {
-    firstName: 'Richard',
+    // Si se requiere podemos inicial alguna prop, en este caso
+    // al cargar el form, en el input firstName estara 'Franz'
+    firstName: 'Franz'
   };
+
+  // La informacion del state se esta guardando 2 veces
+  // Cada input guarda su propio valor y al mismo tiempo
+  // la está guardando en setState. Para solucionarlo
+  // hay que modificar los inputs de un estado
+  // de no controlados a controlados. Añadiendo un prop
+  // adicional  a los input: value={this.state.myProp}
 
   handleChange = e => {
     this.setState({
