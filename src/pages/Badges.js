@@ -13,11 +13,15 @@ class Badges extends React.Component {
     data: undefined,
   };
 
+  // Una vez que nuestro Componente se Montó
   componentDidMount() {
     this.fetchData();
   }
 
   fetchData = async () => {
+    // Inicializamos loading y error, pq fetchData()
+    // se llamará varias veces, y no queremos que se
+    // mantengan los datos del pedido anterior
     this.setState({ loading: true, error: null });
 
     try {

@@ -1,10 +1,14 @@
+// Un tipo de libreria, para hacer la llamada a un servidor
+// que ya tenemos corriendo (al ejecutar nuestro entorno de desarrollo local)
+// Este servidor sera nuestra api y estara corriendo en el puerto 3001
+
 const BASE_URL = 'http://localhost:3001';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-const randomNumber = (min = 0, max = 1) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
-const simulateNetworkLatency = (min = 30, max = 1500) =>
-  delay(randomNumber(min, max));
+
+const randomNumber = (min = 0, max = 1) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+const simulateNetworkLatency = (min = 30, max = 1500) => delay(randomNumber(min, max));
 
 async function callApi(endpoint, options = {}) {
   await simulateNetworkLatency();
@@ -25,6 +29,12 @@ const api = {
   badges: {
     list() {
       return callApi('/badges');
+      // Para simular retorno de data vacia
+      // Lo manejamos en BadgeList
+      // return [];
+      // Para simiar un error
+      // Lo manejamos en Badges
+      // throw new Error('Manejando el Error')
     },
     create(badge) {
       return callApi(`/badges`, {

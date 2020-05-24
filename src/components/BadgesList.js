@@ -28,6 +28,9 @@ class BadgesListItem extends React.Component {
 
 class BadgesList extends React.Component {
   render() {
+    // Al hacer la peticion api.badges.list();
+    // Manejamos si la api retorna data vacia
+    // api = {badges: {list() {return [];},
     if (this.props.badges.length === 0) {
       return (
         <div>
