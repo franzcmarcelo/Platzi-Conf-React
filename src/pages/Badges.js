@@ -19,10 +19,13 @@ class Badges extends React.Component {
   componentDidMount() {
     this.fetchData();
 
+    // Se ejecutara fetchData cada 5seg
+    // Es decir, se actualizara la Data, llamando a list
     this.intervalId = setInterval(this.fetchData, 5000);
   }
 
   componentWillUnmount() {
+    // Para cuando se haya desmotando no siga ejecutandose el setInterval
     clearInterval(this.intervalId);
   }
 
@@ -38,6 +41,8 @@ class Badges extends React.Component {
   };
 
   render() {
+    // Para no estar mostrando el Loader cada 5seg, nos aeguramos
+    // que solo se muestre la primera vez, cuando no hay data
     if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
@@ -69,6 +74,8 @@ class Badges extends React.Component {
 
           <BadgesList badges={this.state.data} />
 
+          {/* Para ver la actualizacion cada 5 seg de alguna
+          manera creamos el componente MiniLoader */}
           {this.state.loading && <MiniLoader />}
         </div>
       </React.Fragment>
