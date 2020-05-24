@@ -28,8 +28,14 @@ class BadgeEdit extends React.Component {
     this.setState({ loading: true, error: null });
 
     try {
+      // En la url http://localhost:3000/badges/250fe715-88d4-4c18-95e7-62a6a097803a/edit
+      // Gracias a react-router podemos acceder al prop match
+      // Y podemos acceder a cada una de las variables mediante params
       const data = await api.badges.read(this.props.match.params.badgeId);
 
+      // En lugar de guardar en data, ahora guardamos en form
+      // Y como pasomos el form por props a BadgeForm
+      // Estos se renderizan en los inputs
       this.setState({ loading: false, form: data });
     } catch (error) {
       this.setState({ loading: false, error: error });
