@@ -32,10 +32,12 @@ class Badges extends React.Component {
 
   render() {
     if (this.state.loading === true) {
+      // UI Para el estado Loading
       return <PageLoading />;
     }
 
     if (this.state.error) {
+      // UI Para el estado Error
       return <PageError error={this.state.error} />;
     }
 
