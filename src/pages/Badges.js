@@ -1,81 +1,115 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './styles/Badges.css';
-import confLogo from '../images/badge-header.svg';
-import BadgesList from '../components/BadgesList';
+import "./styles/Badges.css";
+import confLogo from "../images/badge-header.svg";
+import BadgesList from "../components/BadgesList";
 
 class Badges extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('1. constructor()');
+  // FIXME:
+  // MONTAJE:
+  // 1-> constructor()
+  // 2-> render()
+  // 3-> componentDidMount()
 
+  constructor(props) {
+    // Inicializamos la super clase Component
+    super(props);
+    console.log("1. constructor()");
+
+    // Se sugiere inicializar el estado aqui
     this.state = {
       data: [],
     };
   }
 
   componentDidMount() {
-    console.log('3. componentDidMount()');
+    console.log("3. componentDidMount()");
 
+    // Peticion simulada de data
+    // setTimeout() devuelve un id
     this.timeoutId = setTimeout(() => {
       this.setState({
         data: [
           {
-            id: '2de30c42-9deb-40fc-a41f-05e62b5939a7',
-            firstName: 'Freda',
-            lastName: 'Grady',
-            email: 'Leann_Berge@gmail.com',
-            jobTitle: 'Legacy Brand Director',
-            twitter: 'FredaGrady22221-7573',
+            id: "2de30c42-9deb-40fc-a41f-05e62b5939a7",
+            firstName: "Freda",
+            lastName: "Grady",
+            email: "Leann_Berge@gmail.com",
+            jobTitle: "Legacy Brand Director",
+            twitter: "FredaGrady22221-7573",
             avatarUrl:
-              'https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon',
+              "https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon",
           },
           {
-            id: 'd00d3614-101a-44ca-b6c2-0be075aeed3d',
-            firstName: 'Major',
-            lastName: 'Rodriguez',
-            email: 'Ilene66@hotmail.com',
-            jobTitle: 'Human Research Architect',
-            twitter: 'MajorRodriguez61545',
+            id: "d00d3614-101a-44ca-b6c2-0be075aeed3d",
+            firstName: "Major",
+            lastName: "Rodriguez",
+            email: "Ilene66@hotmail.com",
+            jobTitle: "Human Research Architect",
+            twitter: "MajorRodriguez61545",
             avatarUrl:
-              'https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon',
+              "https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon",
           },
           {
-            id: '63c03386-33a2-4512-9ac1-354ad7bec5e9',
-            firstName: 'Daphney',
-            lastName: 'Torphy',
-            email: 'Ron61@hotmail.com',
-            jobTitle: 'National Markets Officer',
-            twitter: 'DaphneyTorphy96105',
+            id: "63c03386-33a2-4512-9ac1-354ad7bec5e9",
+            firstName: "Daphney",
+            lastName: "Torphy",
+            email: "Ron61@hotmail.com",
+            jobTitle: "National Markets Officer",
+            twitter: "DaphneyTorphy96105",
             avatarUrl:
-              'https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon',
+              "https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon",
           },
         ],
       });
     }, 3000);
   }
 
+  // Una ves hecha la peticion simulada en componentDidMount()
+  // FIXME:
+  // ACTUALIZACIÓN
+  // 4. render()
+  // 5. componentDidUpdate()
+
+  // Este método recibe dos argumentos:
+  // Los props y el state que teníamos antes
   componentDidUpdate(prevProps, prevState) {
-    console.log('5. componentDidUpdate()');
+    console.log("5. componentDidUpdate()");
+
+    // Valores anteriores
     console.log({
       prevProps: prevProps,
       prevState: prevState,
     });
 
+    // Valores actuales
     console.log({
       props: this.props,
       state: this.state,
     });
   }
 
+  // Al salir de escena el componente
+  // FIXME:
+  // DESMONTAJE
+  // 6. componentWillUnmount()
+
   componentWillUnmount() {
-    console.log('6. componentWillUnmount');
+    console.log("6. componentWillUnmount");
+
+    // Al cambiar de vista antes de que regrese la peticion simulada:
+    // Warning: Can't perform a React state update on an unmounted component
+    // React no puede actualziar un componente que no esta montado
+
+    // Para cancelar la petición del componente desmontado y
+    // no gastar recursos en vano, ejecutamos la siguiente funcion que
+    // cancelara el setTimeOut() medante su id
     clearTimeout(this.timeoutId);
   }
 
   render() {
-    console.log('2/4. render()');
+    console.log("2/4. render()");
     return (
       <React.Fragment>
         <div className="Badges">
